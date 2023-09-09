@@ -1,0 +1,68 @@
+mesa sth while sthn arxh
+
+if ($_=~/^ID\s{3}(.*?)\s+(.*?)\;\s+(\d+\sAA.)/m)
+{
+#print ">$1|$3";
+print ">$1";
+}
+if ($_=~/^AC\s{3}(.*?)\;/m)
+{
+print "|$1";
+}
+if ($_=~/^SQ   SEQUENCE\s+(.*?)\;/m)
+{
+print "|$1\n";
+}
+
+
+
+
+
+
+$/="\/\/\n";
+
+
+
+while (<>)
+{
+if ($_=~/^ID\s{3}(.*?)\s+(.*?)\;\s+(\d+\sAA.)/m)
+{
+#print ">$1|$3";
+print ">$1";
+}
+if ($_=~/^AC\s{3}(.*?)\;/m)
+{
+print "|$1";
+}
+
+if ($_=~/^SQ SEQUENCE\s+(.*?)\;/m)
+{
+print "|$1\n";
+}
+
+if ($_=~/^FT\s{3}TRANSMEM\s+(\d+)\s+(\d+)\s+(.*)\./m){
+
+
+
+@tmstart=$1; #antisoixei sthn proth paren8esh
+@tmend=$2; #antisoixei sthn 2h paren8esh
+
+print "@tmstart-@tmend\n";
+
+
+
+}
+
+
+
+while ($_=~/^\s{5}(.*)/mg)
+{
+$sequence=$1;
+$sequence=~s/\s//g;
+
+print "$sequence";
+}
+
+
+print "\n";
+}

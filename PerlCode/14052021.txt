@@ -1,0 +1,53 @@
+while (<>){
+
+
+
+    if ($_=~/^ID\s{3}(.*?)\s+(.*?)\;\s+(\d+\sAA.)/m){
+
+        print ">$1";
+
+    }
+
+    if ($_=~/^AC\s{3}(.*?)\;/m){
+
+        print "|$1 \n";
+
+    }
+
+
+
+    while ($_=~/^\s{5}(.*)/mg){
+
+        $sequence=$1;
+
+        $sequence=~s/\s//g;
+
+        print "$sequence\n";
+
+
+
+        if($sequence=~/(.*LA[GA]C)/){
+
+        # if($sequence=~/(.*[LVI][ASTG][GA]C)/){
+
+        # if($sequence=~/(.*[^DERK]{6}[LIVMFWSTAG]{2}[LIVMFYSTAGCQ][AGS]C)/){
+
+        # if($sequence=~/^([MV].{0,13}[RK][^DERK]{6,20}[LIVMFESTAG][LVIAM][IVMSTAFG][AG]C)/){
+
+            $x=length($1);
+
+            $a = $a + 1;
+
+        }
+
+
+
+    }
+
+}
+
+
+
+print "\n";
+
+print "$a LIPOPROTEINS FOUND \n";
